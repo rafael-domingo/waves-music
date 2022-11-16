@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import { playAudio } from '../util';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faPlay,
@@ -24,6 +25,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, s
             }
          })
         setSongs(newSongs);
+        playAudio(isPlaying, audioRef)
     }, [currentSong])
     // Event handlers
     const playSongHandler = () => {        
@@ -72,7 +74,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, s
                     onChange={dragHandler}
                     value={songInfo.currentTime}
                     type="range" />
-                <p>{getTime(songInfo.duration)}</p>
+                <p>{songInfo.duration ? getTime(songInfo.duration) : "00:00"}</p>
             </div>
             <div className="play-control">
                 <FontAwesomeIcon onClick={() => skipTrackHandler('skip-backward')} className='skip-back' size='2x' icon={faAngleLeft} />                
