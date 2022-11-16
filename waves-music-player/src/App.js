@@ -43,6 +43,9 @@ function App() {
         setSongInfo={setSongInfo}
         songInfo={songInfo}
         timeUpdateHandler={timeUpdateHandler}
+        songs={songs}
+        setCurrentSong={setCurrentSong}
+        setSongs={setSongs}
       />
       <Library
         songs={songs}
