@@ -27,6 +27,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, s
         setSongs(newSongs);
         playAudio(isPlaying, audioRef)
     }, [currentSong])
+
     // Event handlers
     const playSongHandler = () => {        
         if (isPlaying) {
@@ -63,18 +64,27 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, s
       
     }
     
+    // Add the styles
+    const trackAnim = {
+        transform: `translateX(${songInfo.animationPercentage}%)`
+    }
 
     return (
         <div className='player'>
             <div className="time-control">
                 <p>{getTime(songInfo.currentTime)}</p>
-                <input
+                <div className="track" style={{background: `linear-gradient(to right, ${currentSong.color[0]}, ${currentSong.color[1]})`}}>
+                    <input
                     min={0}
                     max={songInfo.duration || 0}
                     onChange={dragHandler}
                     value={songInfo.currentTime}
-                    type="range" />
-                <p>{songInfo.duration ? getTime(songInfo.duration) : "00:00"}</p>
+                        type="range" />
+                    <div className="animate-track" style={trackAnim}></div>
+                    </div>
+                    <p>{songInfo.duration ? getTime(songInfo.duration) : "00:00"}</p>
+                    
+                
             </div>
             <div className="play-control">
                 <FontAwesomeIcon onClick={() => skipTrackHandler('skip-backward')} className='skip-back' size='2x' icon={faAngleLeft} />                
