@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { playAudio } from '../util';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faPlay,
@@ -8,7 +7,7 @@ import {
     faAngleRight
 } from '@fortawesome/free-solid-svg-icons';
 
-const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, songInfo, timeUpdateHandler, songs, setCurrentSong, setSongs }) => {            
+const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, songInfo, timeUpdateHandler, songs, setCurrentSong, setSongs, songEndHandler }) => {            
     // useEffect
     useEffect(() => {
          const newSongs = songs.map((sng) => {
@@ -24,8 +23,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, s
                 }
             }
          })
-        setSongs(newSongs);
-        playAudio(isPlaying, audioRef)
+        setSongs(newSongs);           
     }, [currentSong])
 
     // Event handlers
@@ -52,15 +50,16 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, s
             currentTime: e.target.value
         })
     }
-    const skipTrackHandler = (direction) => {
+    const skipTrackHandler = async (direction) => {
         let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
         if (currentIndex < songs.length || currentIndex > 0) {
             if (direction === 'skip-forward') {
-                currentIndex < songs.length - 1 && (setCurrentSong(songs[currentIndex + 1]))                     
+                currentIndex < songs.length - 1 && (await setCurrentSong(songs[currentIndex + 1]))                     
             } else if (direction === 'skip-backward') {
-                currentIndex > 0 && (setCurrentSong(songs[currentIndex - 1]))
+                currentIndex > 0 && (await setCurrentSong(songs[currentIndex - 1]))
             }
-        }
+        }        
+        if (isPlaying) audioRef.current.play();
       
     }
     
@@ -96,6 +95,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, s
                 onLoadedMetadata={timeUpdateHandler}
                 ref={audioRef}
                 src={currentSong.audio}
+                onEnded={songEndHandler}
             ></audio>
         </div>
     )
