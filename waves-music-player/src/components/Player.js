@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faPlay,
@@ -8,10 +8,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, songInfo, timeUpdateHandler, songs, setCurrentSong, setSongs, songEndHandler }) => {            
-    // useEffect
-    useEffect(() => {
-         const newSongs = songs.map((sng) => {
-            if (sng.id === currentSong.id) {
+    const activeLibraryHandler = (nextPrev) => {
+        const newSongs = songs.map((sng) => {
+            if (sng.id === nextPrev.id) {
                 return {
                     ...sng,
                     active: true,
@@ -23,9 +22,8 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, s
                 }
             }
          })
-        setSongs(newSongs);           
-    }, [currentSong])
-
+        setSongs(newSongs);   
+    }
     // Event handlers
     const playSongHandler = () => {        
         if (isPlaying) {
@@ -51,12 +49,15 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, s
         })
     }
     const skipTrackHandler = async (direction) => {
+        
         let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
         if (currentIndex < songs.length || currentIndex > 0) {
             if (direction === 'skip-forward') {
-                currentIndex < songs.length - 1 && (await setCurrentSong(songs[currentIndex + 1]))                     
+                currentIndex < songs.length - 1 && (await setCurrentSong(songs[currentIndex + 1]))     
+                activeLibraryHandler(songs[currentIndex + 1]);
             } else if (direction === 'skip-backward') {
                 currentIndex > 0 && (await setCurrentSong(songs[currentIndex - 1]))
+                activeLibraryHandler(songs[currentIndex - 1]);
             }
         }        
         if (isPlaying) audioRef.current.play();
