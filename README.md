@@ -15,7 +15,7 @@ This project is complete and no further updates will be made. It is not intended
 # Screenshots
 
 <p float="left">
-<img src="/public/waves-screenshot.png" width="400" height="200"/>
+<img src="/waves-music-player/public/waves-screenshot.png" width="400" height="200"/>
 </p>
 
 # Installation and Setup Instructions
