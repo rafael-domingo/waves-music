@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# Waves App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## What is it?
 
-## Available Scripts
+A lightweight music playback web application. Intended as purely an exercise in React and HTMl/CSS principles.
 
-In the project directory, you can run:
+## Tell me more...
 
-### `npm start`
+This is a project that was part of [Dev Ed's](https://developedbyed.com/) Creative React and Redux Course. For the most part, the code is similar to what was prescribed in the project so no credit is taken for the idea or the structure of the application. This project was simply to observe Dev Ed's strategy of setting up a React App and gather ideas regarding CSS styling for a future project with similar functionality.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Project Status
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project is complete and no further updates will be made. It is not intended for production or third-party use.
 
-### `npm test`
+# Screenshots
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<p float="left">
+<img src="/public/waves-screenshot.png" width="400" height="200"/>
+</p>
 
-### `npm run build`
+# Installation and Setup Instructions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`npm install`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## To start app:
 
-### `npm run eject`
+`npm start`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Tech Stack
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Front-end
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- [React](https://create-react-app.dev/)
+- [Sass](https://sass-lang.com/)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Visual assets
 
-## Learn More
+- [Font-Awesome](https://github.com/FortAwesome/Font-Awesome)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Personal Comments
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To supplement my existing HTML/CSS/JS/React knowledge, I'm in the process of taking [Dev Ed's](https://developedbyed.com) Creative React and Redux Course. The reason why is to see how another developer structures a React application and how they might approach a coding problem. This project in particular was interesting because it utilizes the implements audio playback which has its own quirks regarding the build-in methods for the `<audio>` tag. In addition, this was my first time implementing Sass for styling in a React app. Previously, I've always used in-line styling in the JSX code. Some other topics covered in this project included the concept of 'lifting state', `useRef`, `useEffect` and the use of basic CSS animations.
